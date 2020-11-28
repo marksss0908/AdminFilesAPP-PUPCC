@@ -13,6 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.master_layout');
-});
+Route::get('/', 'FolderController@index')->name('folder.index');
