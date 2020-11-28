@@ -28,15 +28,15 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        @foreach($menus as $menu)
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $menu->name_id }}"
-                aria-expanded="true" aria-controls="{{ $menu->name_id }}">
+        @foreach($folders as $folder)
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $folder->name_id }}"
+                aria-expanded="true" aria-controls="{{ $folder->name_id }}">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>{{ $menu->folder_name }}</span>
+                <span>{{ $folder->folder_name }}</span>
             </a> 
-            <div id="{{ $menu->name_id }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="{{ $folder->name_id }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    @foreach($menu->subfolders as $subfolder)
+                    @foreach($folder->subfolders as $subfolder)
                         <a class="collapse-item" href="buttons.html">{{ $subfolder->subfolder_name }}</a>
                     @endforeach
                 </div>

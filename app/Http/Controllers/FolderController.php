@@ -9,7 +9,6 @@ class FolderController extends Controller
 {
     public function index()
     {
-        $menus = Folder::with('subfolders')->get();
-        return view('folders.index', compact('menus'));
+        return view('folders.index');
     }
 }
