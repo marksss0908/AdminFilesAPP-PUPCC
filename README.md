@@ -12,7 +12,8 @@ INSERT INTO db_filing.folders (folder_name,created_at,updated_at) VALUES
 INSERT INTO db_filing.subfolders (folder_id,subfolder_name,created_at,updated_at) VALUES
 	 (1,'Sub Main 01',NULL,NULL),
 	 (1,'Sub Main 02',NULL,NULL),
-	 (2,'Sub Secondary 01',NULL,NULL);
+	 (2,'Sub Secondary 01',NULL,NULL);  
+     
 -- files Table
 INSERT INTO db_filing.files (subfolder_id,filename,created_at,updated_at) VALUES
 	 (1,'Main File 01',NULL,NULL),
