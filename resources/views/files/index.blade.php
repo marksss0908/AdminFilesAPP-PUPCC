@@ -9,6 +9,7 @@
             <tr>
                 <th>File ID</th>
                 <th>File Name</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,10 @@
                 <tr>
                     <td>{{ $file->id }}</td>
                     <td>{{ $file->filename }}</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="#">View</a>
+                        <a class="btn btn-sm btn-danger" href="#">Delete</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
