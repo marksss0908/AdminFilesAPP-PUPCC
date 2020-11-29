@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Folder Contents</h1>
+<h1 class="h3 mb-4 text-gray-800">Contents of <strong>{{ $files[0]->subfolder->subfolder_name }}</strong></h1>
 <div class="row">
     <table class="table table-bordered">
         <thead>
