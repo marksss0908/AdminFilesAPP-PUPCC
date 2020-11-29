@@ -31,13 +31,13 @@
         @foreach($folders as $folder)
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $folder->name_id }}"
                 aria-expanded="true" aria-controls="{{ $folder->name_id }}">
-                <i class="fas fa-fw fa-cog"></i>
+                <i class="fas fa-fw fa fa-folder"></i>
                 <span>{{ $folder->folder_name }}</span>
             </a> 
             <div id="{{ $folder->name_id }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     @foreach($folder->subfolders as $subfolder)
-                        <a class="collapse-item" href="buttons.html">{{ $subfolder->subfolder_name }}</a>
+                        <a class="collapse-item" href="{{ route('files.index', [$subfolder]) }}">{{ $subfolder->subfolder_name }}</a>
                     @endforeach
                 </div>
             </div>

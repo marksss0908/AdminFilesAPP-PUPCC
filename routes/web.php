@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return view('default');
 });
+
+Route::get('/{subfolder}/files', 'FileController@index')->name('files.index');
