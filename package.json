@@ -17,13 +17,5 @@
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0"
-    },
-    "scripts": {
-        "build": "cd client && npm run build",
-        "install": "cd client && npm install",
-        "start": "node server",
-        "server": "nodemon server",
-        "client": "npm start --prefix client",
-        "dev": "concurrently \"npm run server\" \"npm run client\""
     }
 }
