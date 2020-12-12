@@ -6,8 +6,14 @@
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
 </div>
 
+<a class="btn btn-sm btn-primary mb-4 ml-5" href="{{route('folder.create')}}">Add Folder</a>
+<a class="btn btn-sm btn-primary mb-4 ml-5" href="{{route('subfolder.create')}}">Add subfolder</a>
+
 <!-- Content Row -->
 <div class="row">
+
+
+    
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
