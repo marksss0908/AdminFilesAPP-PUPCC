@@ -1,3 +1,5 @@
+# AdminFiles-PUPC
+
 - Check .env file for database name.  
 - Run `composer update` if you cannon run `php artisan serv`  
 - Run `php artisan migrate:fresh`  
