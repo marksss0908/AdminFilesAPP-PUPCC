@@ -5,7 +5,7 @@
 <h1 class="h3 mb-4 text-gray-800">Add Files</h1>
 <div class="row ml-3 col-lg-12">
 
-  <form action ="{{ route('files.store')}}" method="post">
+  <form action ="{{ route('files.store')}}" method="post" enctype="multipart/form-data">
           @csrf
 
           <div class="form-group">
@@ -24,7 +24,7 @@
 
             <div class="form-group">
               <label for="File">File</label>
-              <input type="file" class="form-control-file" >
+              <input type="file" class="form-control-file" name = "file" >
             </div>
 
 

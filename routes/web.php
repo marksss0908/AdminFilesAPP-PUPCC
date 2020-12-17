@@ -24,7 +24,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 Route::get('/{subfolder}/files', 'FileController@index')->name('files.index');
 Route::get('/files/create/{subfolder}', 'FileController@create')->name('files.create');
 Route::post('/files/store', 'FileController@store')->name('files.store'); 
-
+Route::get('/folder/donwload/{id}', 'FileController@download')->name('file.download');
 //folder
 Route::get('/folder/create/', 'FolderController@create')->name('folder.create');
 Route::post('/folder/store', 'FolderController@store')->name('folder.store'); 
@@ -33,4 +33,6 @@ Route::post('/folder/store', 'FolderController@store')->name('folder.store');
 //subfolder
 Route::get('/subfolder/create/', 'SubfolderController@create')->name('subfolder.create');
 Route::post('/subfolder/store', 'SubfolderController@store')->name('subfolder.store'); 
+
+
 

@@ -21,7 +21,7 @@
                         <td>{{ $file->filename }}</td>
                         <td>{{ $file->description }}</td>
                         <td>
-                            <a class="btn btn-sm btn-primary" href="#">Download</a>
+                            <a class="btn btn-sm btn-primary" href="{{route ('file.download', $file->id)}}">Download</a>
                             <a class="btn btn-sm btn-danger" href="#">Delete</a>
                         </td>
                     </tr>
