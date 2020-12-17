@@ -18,7 +18,7 @@
             </div>
 
             <div class="form-group">
-            <input type="text" class="form-control" name ="subfolder_id" placeholder="Enter Description" value="{{ $subfolder->id }}">
+            <input type="hidden" class="form-control" name ="subfolder_id" placeholder="Enter Description" value="{{ $subfolder->id }}">
             </div>
           
 

@@ -9,12 +9,17 @@ use App\Subfolder;
 
 class FileController extends Controller
 {
+  
     public function index(Subfolder $subfolder)
     {
+        $count_file = File::withcount('subfolder')
+         ->where('subfolder_id', $subfolder->id)
+          ->get();
+
         $files = File::with('subfolder')
             ->where('subfolder_id', $subfolder->id)
             ->get();
-        return view('files.index', compact('files', $subfolder->id));
+        return view('files.index', compact('files','subfolder',  $subfolder->id));
     }
 
 
@@ -29,8 +34,7 @@ class FileController extends Controller
     }
 
     public function store(Request $request){
-
-
+        
         // dd($subfolderId);
         // $subfolderId = File::with('subfolder')
         // ->where('subfolder_id', $subfolder->id)
