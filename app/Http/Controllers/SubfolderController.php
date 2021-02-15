@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AddSubfolderRequest;
 use App\Folder;
 use App\Subfolder;
 
@@ -17,7 +18,7 @@ class SubfolderController extends Controller
 
     }
 
-    public function store(Request $request){
+    public function store(AddSubfolderRequest $request){
 
 
         $subfolder = new Subfolder;
@@ -26,6 +27,6 @@ class SubfolderController extends Controller
         $subfolder->folder_id = $request->folder_id;
         $subfolder->save();
     
-        return redirect()->route('dashboard.index');
+        return redirect()->route('dashboard.index')->with('Subfolderadded', 'Subfolder added sucessfully!');
     }
 }

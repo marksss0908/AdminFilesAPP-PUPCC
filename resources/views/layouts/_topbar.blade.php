@@ -1,22 +1,32 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    
 
     <!-- Sidebar Toggle (Topbar) -->
-    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">    
         <i class="fa fa-bars"></i>
     </button>
 
+    <div class="d-none d-md-block d-xl-block ml-3">
+        <h3>Polythecnic University of the Philippines (Calauan Campus)</h3>
+    </div> 
+
+    {{-- show in small screen --}}
+    <h4 class = "mt-1 nav-item dropdown no-arrow d-block d-sm-block d-md-none">PUPCC</h4>
+    
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 
-
-
+        
         
         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-        <li class="nav-item dropdown no-arrow d-sm-none">
+        <li class="nav-item dropdown no-arrow d-sm-none ">
+            
             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-search fa-fw"></i>
             </a>
+            
+
             <!-- Dropdown - Messages -->
             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                 aria-labelledby="searchDropdown">
@@ -41,9 +51,9 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Mark Bautista</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{$user = Auth::user()->name}}</span>
                 <img class="img-profile rounded-circle"
-                    src="img/undraw_profile.svg">
+                    src="{{asset('img/undraw_profile.svg')}}">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -61,7 +71,7 @@
                     Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="{{route('logout')}}" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                 </a>

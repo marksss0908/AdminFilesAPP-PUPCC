@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Http\View\Composers\FoldersComposer;
 //use App\Folder;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
         //     $view->with('folders', Folder::with('subfolders')->get());
         // });
         // Option - 3 : Dedicated Class
+        
+        //$userrole = auth()->user()->role;
+        //$userRole = Auth::user()->id;
+        //dd($userRole);
         View::composer(['layouts._sidebar'], FoldersComposer::class);
     }
 }

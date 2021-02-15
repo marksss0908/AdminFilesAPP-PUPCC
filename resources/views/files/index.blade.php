@@ -7,11 +7,22 @@
     {{-- <p>count of file in this folder <strong>{{$count_file[0]->subfolder->id}} </strong> </p> --}}
     <a class="btn btn-sm btn-primary mb-4 ml-5" href="{{ route('files.create', $subfolder->id)}}">Add File</a>
 
-        <table class="table table-bordered ml-3 mr-3" id = "files-table">
+
+        @if(Session::has('Fileadded'))     
+            <div class="row ">
+                <div class="col-12">
+                    <div class="alert alert-success">
+                        {{Session::get('Fileadded')}}
+                    </div>
+                </div>
+            </div>
+        @endif
+        <table class="table table-bordered" id = "files-table">
             <thead>
                 <tr>
                     <th>File Name</th>
                     <th>Description</th>
+                    <th>Document</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -20,9 +31,10 @@
                     <tr>       
                         <td>{{ $file->filename }}</td>
                         <td>{{ $file->description }}</td>
+                        <td>{{ $file->document }}</td>
                         <td>
                             <a class="btn btn-sm btn-primary" href="{{route ('file.download', $file->id)}}">Download</a>
-                            <a class="btn btn-sm btn-danger" href="#">Delete</a>
+                            <a class="btn btn-sm btn-danger"  href="{{route ('file.edit', $file->id)}}">Edit</a>
                         </td>
                     </tr>
                 @endforeach
@@ -33,7 +45,7 @@
 
 @section('pages_level_css')
     <!-- Custom styles for this page -->
-    <link href="{{('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="{{asset ('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 @endsection
 
 

@@ -9,6 +9,8 @@ class FoldersComposer
 {
     public function compose(View $view)
     {
+        $userRole = auth()->user()->role;
+        //dd($userRole);
         $view->with('folders', Folder::with('subfolders')->get());
     }
 }
