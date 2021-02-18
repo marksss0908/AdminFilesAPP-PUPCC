@@ -34,7 +34,13 @@
       <select class="form-control" id="exampleFormControlSelect1" name ="folder_id">
 
         @foreach ($folders as $folder)
-        <option value = "{{ $folder->id}}">{{ $folder->folder_name}}</option>
+            @if (Auth::user()->role === 'Super Admin')
+              <option value = "{{ $folder->id}}">{{ $folder->folder_name}}</option>
+            @else
+              @if ($folder->role === Auth::user()->role)
+                <option value = "{{ $folder->id}}">{{ $folder->folder_name}}</option>
+              @endif
+            @endif
         @endforeach
           
       </select>

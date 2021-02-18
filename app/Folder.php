@@ -14,7 +14,7 @@ class Folder extends Model
     
     protected $table = 'folders';
     protected $fillable = ['folder_name'];
-    public $timestamps = false;
+    //public $timestamps = false;
 
     public function subfolders()
     {

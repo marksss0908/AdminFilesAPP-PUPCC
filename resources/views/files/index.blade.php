@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- Page Heading -->
+{{-- <h1 class="h3 mb-4 text-gray-800">Folder <strong>{{ $folder->folder_name }}</strong></h1> --}}
     <h1 class="h3 mb-4 text-gray-800">Contents of <strong>{{ $subfolder->subfolder_name }}</strong></h1>
   
     {{-- <p>count of file in this folder <strong>{{$count_file[0]->subfolder->id}} </strong> </p> --}}
@@ -32,9 +33,17 @@
                         <td>{{ $file->filename }}</td>
                         <td>{{ $file->description }}</td>
                         <td>{{ $file->document }}</td>
-                        <td>
-                            <a class="btn btn-sm btn-primary" href="{{route ('file.download', $file->id)}}">Download</a>
-                            <a class="btn btn-sm btn-danger"  href="{{route ('file.edit', $file->id)}}">Edit</a>
+                        <td class="row">
+                            <a class="btn btn-sm btn-success ml-3 mr-3" href="{{route ('file.download', $file->id)}}">Download</a>
+                            <a class="btn btn-sm btn-primary mr-3"  href="{{route ('file.edit', $file->id)}}">Edit</a>
+
+                            <form action="{{route ('archive.archive', $file->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" value="Delete" class ="btn btn-sm btn-danger">Archive</button>
+                            </form>
+                            
+                            
                         </td>
                     </tr>
                 @endforeach

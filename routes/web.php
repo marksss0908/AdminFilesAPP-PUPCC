@@ -48,6 +48,11 @@ Route::post('/roles/store/', 'RolesController@store')->name('roles.store')->midd
 Route::get('/setting', 'SettingController@index')->name('setting.index')->middleware('auth');
 Route::post('/setting/store', 'SettingController@store')->name('setting.store')->middleware('auth'); 
 
+//archive
+Route::get('/archive', 'ArchiveController@index')->name('archive.index')->middleware('auth');
+Route::delete('/archive/{id}', 'ArchiveController@archive')->name('archive.archive')->middleware('auth');
+Route::get('/arhive/download/{id}', 'ArchiveController@download')->name('archive.download')->middleware('auth');
+Route::get('/registerr', 'RegisterController@index')->name('register')->middleware('auth');
 
 Auth::routes();
 

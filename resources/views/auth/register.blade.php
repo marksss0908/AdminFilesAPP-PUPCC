@@ -29,11 +29,20 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                             <div class="col-md-6">
                                 {{-- <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus> --}}
-                                    <select id="role" class="form-control @error('role') is-invalid @enderror" name ="role" value="{{ old('role') }}"> --}}
+                                    <select id="role" class="form-control @error('role') is-invalid @enderror" name ="role" value="{{ old('role') }}">
                                       <option value="Director">Director</option>
-                                      <option value="Cashier">Cashier</option>
-                                      <option value ="Registrar-Admission">Registrar-Admission</option>
+                                      <option value="Cashier">Cashier</option>x
+                                      <option value="Registrar-Admin"> Registrar-Admin </option>
+                                      <option value="Super Admin">Super Admin</option>
                                     </select>
+
+                                    {{-- <select id="role" class="form-control @error('role') is-invalid @enderror" name ="role" value="{{ old('role') }}">
+                                        @foreach ($roles as $role)
+                                        <option value="{{$role->name}}"> {{$role->name}} </option>
+                                        @endforeach   
+                                    </select> --}}
+
+
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

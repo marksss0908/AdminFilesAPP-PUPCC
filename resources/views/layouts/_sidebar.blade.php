@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route ('dashboard.index')}}">
         <div class="">
             <img src="{{ asset('img/logo4.png') }}" alt="PUP LOGO">
         </div>
@@ -33,6 +33,26 @@
     @role(Auth::user()->role)
     <li class="nav-item">
        
+      
+    @if (Auth::user()->role === 'Super Admin')
+            @foreach($folders as $folder)
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $folder->name_id }}"
+                aria-expanded="true" aria-controls="{{ $folder->name_id }}">
+                <i class="fas fa-fw fa fa-folder"></i>
+                <span>{{ $folder->folder_name }}</span>
+            </a> 
+            <div id="{{ $folder->name_id }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @forelse($folder->subfolders as $subfolder)
+                        <a class="collapse-item" href="{{ route('files.index', [$subfolder]) }}">{{ $subfolder->subfolder_name }}</a>
+                    @empty
+                        <p class="collapse-item text-muted">No Folders</p>
+                    @endforelse
+                </div>
+            </div>
+            @endforeach
+
+    @else
         @foreach($folders as $folder)
             @if ($folder->role === Auth::user()->role)
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $folder->name_id }}"
@@ -53,7 +73,7 @@
             </div>
             @endif
         @endforeach
-       
+    @endif
 
     </li>
     @endrole

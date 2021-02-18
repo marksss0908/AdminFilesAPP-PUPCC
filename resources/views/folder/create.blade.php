@@ -26,14 +26,16 @@
     </div>
 
 
-    <label for="Permission">Select Permission</label>
+
+
+    {{-- <label for="Permission">Select Permission</label>
     <div class="form-group">
       <select class="form-control" id="exampleFormControlSelect1" name ="folderrole">
         @foreach ($roles as $role)
         <option value = "{{ $role->name}}">{{ $role->name}}</option>
         @endforeach
       </select>
-    </div>
+    </div> --}}
 
     <button type = "submit" class="btn btn-sm btn-primary mt-3">Save</button>
     <a class="btn btn-sm btn-primary mt-3" href = {{route ('dashboard.index')}}>Cancel</a>

@@ -7,6 +7,7 @@ use App\Folder;
 use App\User;
 use Spatie\Permission\Traits\HasRoles;
 use App\Roles;
+use Auth;
 class FolderController extends Controller
 {
     use HasRoles;
@@ -20,7 +21,7 @@ class FolderController extends Controller
 
             $folder = new Folder;
             $folder->folder_name = $request->foldername;
-            $folder->role = $request->folderrole;
+            $folder->role = Auth::user()->role;
             $folder->save();
            // auth()->user()->assignRole($request->folderrole);
 

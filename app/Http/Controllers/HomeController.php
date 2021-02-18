@@ -25,11 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Role::create(['name'=>'Director']);
-        // Permission::create(['name'=>'Director Permission']);
-        // $role = Role::findorfail(1);
-        // $permission = Permission::findorfail(1);
-        // $role->givePermissionTo($permission);
+        //Role::create(['name'=>'Director']);
+        //Permission::create(['name'=>'Director Permission']);
+        //$role = Role::findorfail(1);
+        //$permission = Permission::findorfail(1);
+        //$role->givePermissionTo($permission);
 
         //auth()->user()->assignRole('student');
         //return view('home');
