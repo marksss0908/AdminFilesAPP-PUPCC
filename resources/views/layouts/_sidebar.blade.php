@@ -3,9 +3,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route ('dashboard.index')}}">
         <div class="">
-            <img src="{{ asset('img/logo4.png') }}" alt="PUP LOGO">
+            <img src="{{ asset('img/logo4.png') }}" alt="PUP LOGO" width="50px" height="50px">
         </div>
-        <div class="sidebar-brand-text mx-3">Admin Files System</div>
+        <div class="sidebar-brand-text">Admin Files System</div>
     </a>
 
     <!-- Divider -->

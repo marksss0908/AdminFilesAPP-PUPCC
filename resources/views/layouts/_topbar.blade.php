@@ -5,9 +5,9 @@
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">    
         <i class="fa fa-bars"></i>
     </button>
-
+    
     <div class="d-none d-md-block d-xl-block ml-3">
-        <h3>Polythecnic University of the Philippines (Calauan Campus)</h3>
+        <h3>Polytechnic University of the Philippines (Calauan Campus)</h3>
     </div> 
 
     {{-- show in small screen --}}

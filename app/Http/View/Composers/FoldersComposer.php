@@ -11,6 +11,8 @@ class FoldersComposer
     {
         $userRole = auth()->user()->role;
         //dd($userRole);
-        $view->with('folders', Folder::with('subfolders')->get());
+        $view->with('folders', Folder::with('subfolders')
+        ->orderByRaw('folder_name ASC')
+        ->get());
     }
 }
