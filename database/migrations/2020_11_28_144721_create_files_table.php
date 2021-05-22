@@ -20,6 +20,7 @@ class CreateFilesTable extends Migration
             $table->text('description');
             $table->text('path');
             $table->text('document');
+            $table->text('role');
             $table->timestamps();
             // FK
             $table->foreign('subfolder_id')->references('id')->on('subfolders');

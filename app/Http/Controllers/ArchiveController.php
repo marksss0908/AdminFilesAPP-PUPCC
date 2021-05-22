@@ -14,7 +14,7 @@ class ArchiveController extends Controller
     public function index(Subfolder $subfolder){
 
         $archives = Archive::all();
-        return view('archivee.index', compact('archives', $subfolder->id));
+        return view('AAAstisla.archive.index', compact('archives', $subfolder->id));
     }
     
     public function archive($id, Subfolder $subfolder){
@@ -42,8 +42,7 @@ class ArchiveController extends Controller
         $archive->save();
 
         
-        return redirect()->route('archive.index');
-
+        return redirect()->route('dashboard.index');
     }
     
     public function download($id){

@@ -20,24 +20,32 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        //Role::create(['name'=>'Director']);
-        //Permission::create(['name'=>'Director Permission']);
-        //$role = Role::findorfail(1);
-        //$permission = Permission::findorfail(1);
-        //$role->givePermissionTo($permission);
 
-        //Role::create(['name'=>'Super Admin']);
-        //Permission::create(['name'=>'Super Admin Permission']);
-        //$role = Role::findorfail(4);
-        //$permission = Permission::findorfail(3);
-        //$role->givePermissionTo($permission);
 
-        //Role::create(['name'=>'Registrar-Admin']);
-        //Permission::create(['name'=>'Registrar-Admin Permission']);
-        //$role = Role::findorfail(3);
-        //$permission = Permission::findorfail(3);
-        //$role->givePermissionTo($permission);
+        ///enable this to add the user with permission;
+        //   Role::create(['name'=>'Admin']);
+        //   Role::create(['name'=>'Director']);
+        //   Role::create(['name'=>'Registrar']);
+        //   Role::create(['name'=>'Cashier']);
+        //   Role::create(['name'=>'Academic-Head']);
 
+
+        //    Permission::create(['name'=>'Director Permission']);
+        //    Permission::create(['name'=>'Registrar Permission']);
+        //    Permission::create(['name'=>'Cashier Permission']);
+        //    Permission::create(['name'=>'Academic-Head Permission']);
+
+
+
+        /* Add Permission to Role*/
+        /* Select the Role and Permision 1 by 1 and give the permission*/
+
+        //   $role = Role::findorfail(5);
+        //   $permission = Permission::findorfail(4);
+        //   $role->givePermissionTo($permission);
+
+
+        
         // Option - 1:  Every single view.
         // View::share('folders', Folder::with('subfolders')->get());
         // Option - 2: Specific Views Only.
@@ -46,10 +54,17 @@ class AppServiceProvider extends ServiceProvider
         // });
         // Option - 3 : Dedicated Class
         
+
+
+
         //$userrole = auth()->user()->role;
         //$userRole = Auth::user()->id;
         //dd($userRole);
-        View::composer(['layouts._sidebar'], FoldersComposer::class);
+
+       
+        
+        
+        View::composer(['AAAstisla.layouts._sidebar'], FoldersComposer::class);
 
 
     }

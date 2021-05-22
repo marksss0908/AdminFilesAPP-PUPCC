@@ -13,7 +13,7 @@ class SubfolderController extends Controller
     public function create(){
         
         $folders = Folder::all();
-         return view('subfolder.create', compact('folders'));
+         return view('AAAstisla.subfolder.create', compact('folders'));
   
 
     }

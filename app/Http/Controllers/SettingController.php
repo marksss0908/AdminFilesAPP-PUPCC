@@ -13,7 +13,7 @@ class SettingController extends Controller
     public function index(){
         $users = User::all();
         $roles = Roles::all();
-        return view('settings.index', compact('roles', 'users'));
+        return view('AAAstisla.settings.index', compact('roles', 'users'));
 
     }
 

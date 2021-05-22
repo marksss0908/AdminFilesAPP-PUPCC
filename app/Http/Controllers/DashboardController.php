@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\File;
 use App\Folder;
 use App\Subfolder;
@@ -13,17 +14,20 @@ class DashboardController extends Controller
 {
     public function index(){
 
-        // Role::create(['name'=>'Registrar-Admission']);
-        // Permission::create(['name'=>'Registrar-Admission Permission']);
-        // $role = Role::findorfail(3);
-        // $permission = Permission::findorfail(3);
-        // $role->givePermissionTo($permission);
-        
-        $fileCount = File::count();
-        $folderCount = Folder::count();
+        if (Auth::user()->role == 'Admin') {
+            $files = File::latest()->take(5)->get();
+            $fileCount = File::count();
+        } else {
+            $files = File::latest()->take(5)->where('role', Auth::user()->role)->get();
+            $fileCount = File::where('role', Auth::user()->role)->count();
+        }
+            
+
+        //$files = File::latest()->take(5)->where('role', Auth::user()->role)->get();
+        $folderCount = Folder::where('role', Auth::user()->role)->count();
         $subfolderCount = Subfolder::count();
 
-        return view('dashboard.index', compact('fileCount', 'folderCount', 'subfolderCount'));
+        return view('AAAstisla.dashboard.index', compact('fileCount', 'folderCount', 'subfolderCount', 'files'));
 
     }
 }

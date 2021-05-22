@@ -42,8 +42,18 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
+        ///
+
+
+        //added dummp
+        // 'dump' => [
+        //     'dump_binary_path' => 'C:/xampp/mysql/bin/', // only the path, so without `mysqldump` or `pg_dump`
+        //     'use_single_transaction',
+        //     'timeout' => 60 * 5, // 5 minute timeout
+        //  ],
 
         'mysql' => [
+            'dump_command_path' =>'C:/xampp/mysql/bin/',
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -58,6 +68,11 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
+            //ADDED CODE
+            'dump' =>[
+                'dump_binary_path' => 'C:/xampp/mysql/bin/',
+            ],
+            //
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],

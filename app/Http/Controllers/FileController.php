@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AddFileRequest;
 
+use Auth;
 use App\File;
 use App\Folder;
 use App\Subfolder;
@@ -13,55 +14,55 @@ use App\Subfolder;
 class FileController extends Controller
 {
   
-    public function index(Subfolder $subfolder)
+    public function index(Folder $folder, Subfolder $subfolder)
     {
+
+        
         // $count_file = File::withcount('subfolder')
         //  ->where('subfolder_id', $subfolder->id)
         //   ->get();
 
+        
         $files = File::with('subfolder')
             ->where('subfolder_id', $subfolder->id)
             ->get();
-        return view('files.index', compact('files','subfolder',  $subfolder->id));
+        return view('AAAstisla.files.index', compact('files','subfolder','folder'));
+
+
     }
 
 
-    public function create(Subfolder $subfolder){
+    public function create($folder, $subfolder, $subfolder_id){
 
-
-        // dd($subfolderId);
-        // return view('files.create', compact('subfolderId'));
-
-
-        return view('files.create', compact('subfolder'));
+        return view('AAAstisla.files.create', compact('folder', 'subfolder' , 'subfolder_id'));
     }
 
-    public function store(AddFileRequest $request, $subfolder){
+    public function store(AddFileRequest $request, $folder, $subfolder, $subfolder_id){
 
 
-        $file = new File;
+        $file = new File;   
         if ($request->hasFile('file')) {
             $upload = $request->file('file');   
-            $path = $upload->store('public/storage');
-            // $file->filename = $upload->getClientOriginalName();      
+            $path = $upload->store("public/storage/$folder/$subfolder");  
             $file->document = $upload->getClientOriginalName();   
             $file->filename = $request->filename;
             $file->description = $request->description; 
             $file->path = $path;
-            $file->subfolder_id = $request->subfolder_id;        
+            $file->subfolder_id = $request->subfolder_id;
+            $file->role = Auth::user()->role;
          }
          $file->save();
 
-        return redirect()->route('files.index', $subfolder)->with('Fileadded', 'File added sucessfully!');
-       
-
+       return redirect()->route('dashboard.index')->with('Fileadded', 'File added sucessfully!');
+       // return redirect()->route('files.index', $subfolder_id)->with('Fileadded', 'File added sucessfully!');
+    
 
 }
 
     public function edit($fileid){
 
          $file = File::findOrfail($fileid);
-        return view('files.edit', compact('file'));
+        return view('AAAstisla.files.edit', compact('file'));
     }
 
     public function update(Request $request, $fileid){
@@ -80,6 +81,7 @@ class FileController extends Controller
     public function download($id){
         $download = File::find($id);
         return storage::download($download->path, $download->document);
+
     }
         
 }

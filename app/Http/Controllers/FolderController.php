@@ -14,7 +14,7 @@ class FolderController extends Controller
 
     public function create(){
         $roles = Roles::all();
-        return view('folder.create', compact('roles'));
+        return view('AAAstisla.folder.create', compact('roles'));
     }
 
     public function store(AddFolderRequest $request){

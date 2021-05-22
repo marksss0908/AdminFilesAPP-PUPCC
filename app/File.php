@@ -13,4 +13,6 @@ class File extends Model
     {
         return $this->belongsTo(Subfolder::class);
     }    
+
+    protected $dates = ['created_at'];
 }
