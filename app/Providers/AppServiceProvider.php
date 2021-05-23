@@ -23,17 +23,17 @@ class AppServiceProvider extends ServiceProvider
 
 
         ///enable this to add the user with permission;
-        //    Role::create(['name'=>'Admin']);
-        //    Role::create(['name'=>'Director']);
-        //    Role::create(['name'=>'Registrar']);
-        //    Role::create(['name'=>'Cashier']);
-        //    Role::create(['name'=>'Academic-Head']);
+            Role::create(['name'=>'Admin']);
+            Role::create(['name'=>'Director']);
+            Role::create(['name'=>'Registrar']);
+            Role::create(['name'=>'Cashier']);
+            Role::create(['name'=>'Academic-Head']);
 
 
-        //     Permission::create(['name'=>'Director Permission']);
-        //     Permission::create(['name'=>'Registrar Permission']);
-        //     Permission::create(['name'=>'Cashier Permission']);
-        //     Permission::create(['name'=>'Academic-Head Permission']);
+             Permission::create(['name'=>'Director Permission']);
+             Permission::create(['name'=>'Registrar Permission']);
+             Permission::create(['name'=>'Cashier Permission']);
+             Permission::create(['name'=>'Academic-Head Permission']);
 
 
 
