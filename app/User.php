@@ -2,11 +2,11 @@
 
 namespace App;
 
+
+use Spatie\Permission\Traits\Hasroles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\Hasroles;
-
 
 class User extends Authenticatable
 {
