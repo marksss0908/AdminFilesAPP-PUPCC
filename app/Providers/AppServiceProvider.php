@@ -40,8 +40,8 @@ class AppServiceProvider extends ServiceProvider
         /* Add Permission to Role*/
         /* Select the Role and Permision 1 by 1 and give the permission*/
 
-            $role = Role::findorfail(2);
-            $permission = Permission::findorfail(1);
+            $role = Role::findorfail(3);
+            $permission = Permission::findorfail(2);
             $role->givePermissionTo($permission);
 
 
