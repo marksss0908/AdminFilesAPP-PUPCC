@@ -23,26 +23,26 @@ class AppServiceProvider extends ServiceProvider
 
 
         ///enable this to add the user with permission;
-           Role::create(['name'=>'Admin']);
-           Role::create(['name'=>'Director']);
-           Role::create(['name'=>'Registrar']);
-           Role::create(['name'=>'Cashier']);
-           Role::create(['name'=>'Academic-Head']);
+        //    Role::create(['name'=>'Admin']);
+        //    Role::create(['name'=>'Director']);
+        //    Role::create(['name'=>'Registrar']);
+        //    Role::create(['name'=>'Cashier']);
+        //    Role::create(['name'=>'Academic-Head']);
 
 
-            Permission::create(['name'=>'Director Permission']);
-            Permission::create(['name'=>'Registrar Permission']);
-            Permission::create(['name'=>'Cashier Permission']);
-            Permission::create(['name'=>'Academic-Head Permission']);
+        //     Permission::create(['name'=>'Director Permission']);
+        //     Permission::create(['name'=>'Registrar Permission']);
+        //     Permission::create(['name'=>'Cashier Permission']);
+        //     Permission::create(['name'=>'Academic-Head Permission']);
 
 
 
         /* Add Permission to Role*/
         /* Select the Role and Permision 1 by 1 and give the permission*/
 
-        //   $role = Role::findorfail(5);
-        //   $permission = Permission::findorfail(4);
-        //   $role->givePermissionTo($permission);
+           $role = Role::findorfail(1);
+           $permission = Permission::findorfail(1);
+           $role->givePermissionTo($permission);
 
 
         
