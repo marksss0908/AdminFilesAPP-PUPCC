@@ -11,6 +11,7 @@ use Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     public function register()
