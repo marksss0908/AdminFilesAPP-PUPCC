@@ -16,8 +16,6 @@ class FileController extends Controller
   
     public function index(Folder $folder, Subfolder $subfolder)
     {
-
-        
         // $count_file = File::withcount('subfolder')
         //  ->where('subfolder_id', $subfolder->id)
         //   ->get();
@@ -30,7 +28,6 @@ class FileController extends Controller
 
 
     }
-
 
     public function create($folder, $subfolder, $subfolder_id){
 

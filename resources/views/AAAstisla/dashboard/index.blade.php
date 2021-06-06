@@ -34,7 +34,7 @@
             <h4>Sample</h4>
           </div>
           <div class="card-body">
-            10000
+            0
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
             <h4>Sample</h4>
           </div>
           <div class="card-body">
-            1,201
+            0
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
             <h4>Sample</h4>
           </div>
           <div class="card-body">
-            47
+            0
           </div>
         </div>
       </div>
