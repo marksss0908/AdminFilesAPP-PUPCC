@@ -2,15 +2,17 @@
 
 namespace App;
 
-
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\Hasroles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
+
 class User extends Authenticatable
 {
-    use Notifiable, Hasroles;
+    use Notifiable, Hasroles, LogsActivity; 
 
     /**
      * The attributes that are mass assignable.

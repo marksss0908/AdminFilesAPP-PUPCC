@@ -43,6 +43,7 @@
                   @endforeach
             @endif
               @endrole 
+              <hr>
               
             </ul>
         </aside>

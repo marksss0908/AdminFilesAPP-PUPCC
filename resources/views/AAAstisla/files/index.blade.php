@@ -28,6 +28,7 @@
                 <table class="table table-bordered text-dark" id = "files-table">
                     <thead>
                         <tr>
+                            <th>Refference Number</th>
                             <th>File Name</th>
                             <th>Description</th>
                             <th>Document</th>
@@ -40,6 +41,7 @@
                     <tbody>
                         @foreach($files as $file)
                             <tr>
+                                <td>{{ $file->id }}</td>
                                 <td>{{ $file->filename }}</td>
                                 <td>{{ $file->description }}</td>
                                 <td>{{ $file->document }}</td>
@@ -62,7 +64,10 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+        </div>
+
+
+   
             
 @endsection
 

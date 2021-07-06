@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-
+        
 
         ///enable this to add the user with permission;
             //   Role::create(['name'=>'Admin']);

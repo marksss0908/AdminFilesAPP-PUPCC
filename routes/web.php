@@ -26,8 +26,8 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index')->
 
 Route::get('/files/{id}/edit', 'FileController@edit')->name('file.edit')->middleware('auth');
 Route::put('/files/{id}', 'FileController@update')->name('file.update')->middleware('auth');
+Route::put('/files/share/{id}', 'FileController@share')->name('file.share')->middleware('auth');
 Route::get('/files/download/{id}', 'FileController@download')->name('file.download')->middleware('auth');
-
 Route::get('/files/{folder}/{subfolder}', 'FileController@index')->name('files.index')->middleware('auth');
 Route::get('/files/create/{foldername}/{subfoldername}/{id}', 'FileController@create')->name('files.create')->middleware('auth');
 Route::post('/files/store/{folder}/{subfoldr}/{id}', 'FileController@store')->name('files.store')->middleware('auth'); 

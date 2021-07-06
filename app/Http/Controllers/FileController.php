@@ -47,6 +47,7 @@ class FileController extends Controller
             $file->path = $path;
             $file->subfolder_id = $request->subfolder_id;
             $file->role = Auth::user()->role;
+            $file->status = "NotShared";
          }
          $file->save();
 
@@ -77,8 +78,21 @@ class FileController extends Controller
 
     public function download($id){
         $download = File::find($id);
+        activity()->log(Auth::user()->name.' downloaded the file '. $download->filename);
+        
         return storage::download($download->path, $download->document);
-
+        
     }
+
+    public function share(Request $request, $fileid){
+
+        $fileshare = File::findOrfail($fileid);
+        $fileshare->update(
+            $request->all()
+        );
+        return redirect()->route('dashboard.index');
+
+   }
+    
         
 }
