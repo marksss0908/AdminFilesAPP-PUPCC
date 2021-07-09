@@ -22,10 +22,15 @@
                     <label for="Description">Description</label>
                     <input type="text" class="form-control" name ="description" autocomplete="off" value ="{{ $file->description }}">
                   </div>     
+
+                  <div class="form-group">
+                    <label for="File">File</label>
+                    <input type="file" class="form-control-file" name = "file" >
+                </div>
         
         </div>
         <div class="card-footer text-right">
-            <button type = "submit"class="btn btn-md btn-primary mr-3"> Update </button>
+            <button type = "submit" class="btn btn-md btn-primary mr-3"}}> Update </button>
             <a class="btn btn-md btn-primary" href = {{route ('dashboard.index')}}>Cancel</a>
         </div>
       </form>

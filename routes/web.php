@@ -22,11 +22,10 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index')->
 
 
 //files
-
-
 Route::get('/files/{id}/edit', 'FileController@edit')->name('file.edit')->middleware('auth');
 Route::put('/files/{id}', 'FileController@update')->name('file.update')->middleware('auth');
 Route::get('/files/download/{id}', 'FileController@download')->name('file.download')->middleware('auth');
+Route::put('/files/share/{id}', 'FileController@share')->name('file.share')->middleware('auth');
 
 Route::get('/files/{folder}/{subfolder}', 'FileController@index')->name('files.index')->middleware('auth');
 Route::get('/files/create/{foldername}/{subfoldername}/{id}', 'FileController@create')->name('files.create')->middleware('auth');
@@ -36,18 +35,6 @@ Route::post('/files/store/{folder}/{subfoldr}/{id}', 'FileController@store')->na
 //folder
 Route::get('/folder/create/', 'FolderController@create')->name('folder.create')->middleware('auth');
 Route::post('/folder/store', 'FolderController@store')->name('folder.store')->middleware('auth'); 
-
-
-//subfolder
-Route::get('/subfolder/create/', 'SubfolderController@create')->name('subfolder.create')->middleware('auth');
-Route::post('/subfolder/store', 'SubfolderController@store')->name('subfolder.store')->middleware('auth'); 
-
-
-
-//folder
-Route::get('/folder/create/', 'FolderController@create')->name('folder.create')->middleware('auth');
-Route::post('/folder/store', 'FolderController@store')->name('folder.store')->middleware('auth'); 
-
 
 //subfolder
 Route::get('/subfolder/create/', 'SubfolderController@create')->name('subfolder.create')->middleware('auth');

@@ -16,8 +16,6 @@ class FileController extends Controller
   
     public function index(Folder $folder, Subfolder $subfolder)
     {
-
-        
         // $count_file = File::withcount('subfolder')
         //  ->where('subfolder_id', $subfolder->id)
         //   ->get();
@@ -30,7 +28,6 @@ class FileController extends Controller
 
 
     }
-
 
     public function create($folder, $subfolder, $subfolder_id){
 
@@ -50,6 +47,7 @@ class FileController extends Controller
             $file->path = $path;
             $file->subfolder_id = $request->subfolder_id;
             $file->role = Auth::user()->role;
+            $file->status = "NotShared";
          }
          $file->save();
 
@@ -76,12 +74,24 @@ class FileController extends Controller
 
    }
 
-
-
     public function download($id){
         $download = File::find($id);
+        activity()->log(Auth::user()->name.' downloaded the file '. $download->filename);
+        
         return storage::download($download->path, $download->document);
-
+        
     }
+
+    public function share(Request $request, $id){
+        
+        // dd($request->status);
+
+         File::where('id','=',$id)->update([
+             'status' => $request->status
+         ]);
+
+        return redirect()->back();
+    }
+    
         
 }
