@@ -82,15 +82,16 @@ class FileController extends Controller
         
     }
 
-    public function share(Request $request, $fileid){
+    public function share(Request $request, $id){
         
-         File::where('id','=',$fileid)->update([
+        // dd($request->status);
+
+         File::where('id','=',$id)->update([
              'status' => $request->status
          ]);
 
         return redirect()->back();
-
-   }
+    }
     
         
 }

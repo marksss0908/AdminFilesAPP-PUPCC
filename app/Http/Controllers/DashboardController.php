@@ -28,13 +28,14 @@ class DashboardController extends Controller
             
 
         //$files = File::latest()->take(5)->where('role', Auth::user()->role)->get();
+        $roles = Role::all();
         $folderCount = Folder::where('role', Auth::user()->role)->count();
         $subfolderCount = Subfolder::count();
         
         
         $lastActivity = Activity::all();
 
-        return view('AAAstisla.dashboard.index', compact('fileCount', 'folderCount', 'subfolderCount', 'files', 'lastActivity', 'sharedFiles'));
+        return view('AAAstisla.dashboard.index', compact('fileCount', 'folderCount', 'subfolderCount', 'files', 'lastActivity', 'sharedFiles', 'roles'));
 
     }
 }

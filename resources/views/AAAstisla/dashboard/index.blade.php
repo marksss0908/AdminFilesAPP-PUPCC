@@ -107,17 +107,15 @@
                                     <td>{{ $file->document }}</td>
                                     <td>{{ $file->created_at->format('M d, Y') }}</td>
 
-                                    <td>
+                                    <td class="d-flex justify-content-around">
                                         <a class="btn btn-primary btn-action" href="{{ route('file.edit', $file->id) }}"
                                             data-toggle="tooltip" title="Edit"><i
-                                                class="fas fa-pencil-alt text-dark"></i></a>
-                                    </td>
-                                    <td>
+                                                class="fas fa-pencil-alt text-dark"></i>
+                                        </a>
                                         <a class="btn btn-success btn-action center"
                                             href="{{ route('file.download', $file->id) }}" data-toggle="tooltip"
-                                            title="Download"><i class="fas fa-download text-dark"></i></a>
-                                    </td>
-                                    <td>
+                                            title="Download"><i class="fas fa-download text-dark"></i>
+                                        </a>
                                         <form action="{{ route('archive.archive', $file->id) }}" method="post">
                                             @csrf
                                             @method('delete')
@@ -126,8 +124,6 @@
                                                     class="fas fa-trash text-dark"></i></button>
 
                                         </form>
-                                    </td>
-                                    <td>
                                         {{-- data-id="{{($file->id)}}" --}}
                                         {{-- <a class="btn btn-success text-light" data-toggle="modal" id="mediumButton" 
                                             data-target="#mediumModal"> <i class="fas fa-plus-circle"></i>Share
@@ -241,45 +237,38 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">choose..</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title" id="exampleModalLabel">Modal</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="modal-body">
                 <form id="updateForm" method="POST">
+                    @method('PUT')
                     @csrf  
-                     @method("PUT")
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
-                                value="Registrar">
-                            <label class="form-check-label" for="exampleRadios1">
-                                Registrar
-                            </label>
-                        </div>
-                        {{-- <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2"
-                                value="Cashier">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Cashier
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios3"
-                                value="Director">
-                            <label class="form-check-label" for="exampleRadios3">
-                                Director
-                            </label>
-                        </div>
-                        --}}
-                </div>
+                    {{-- <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
+                            value="Registrar">
+                        <label class="form-check-label" for="exampleRadios1">
+                            Registrar
+                        </label>
+                    </div> --}}
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Send To</label>
+                        <select class="form-control" name="status" id="exampleFormControlSelect1">
+                          @foreach ($roles as $role)
+                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                          @endforeach
+                        </select>
+                    </div>
+                </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-warning btn-action center" title="Share"> Share <i
-                        class="fas fa-share text-dark"></i>
+                    <button type="submit" class="btn btn-warning btn-action center" onclick="document.getElementById('updateForm').submit()">Share<i
+                        class="fas fa-share text-white ml-2"></i>
                     </button>
                 </div>
-            </form>
-          </div>
+            </div>
         </div>
     </div>
 
@@ -372,13 +361,8 @@
     $(document).ready(function () {
         $('.file').each(function() {
           $(this).click(function(event){
-              $console.log($(this).data("id"));
-              //yan? try mo nga yan kung may $ yung console . log hahah di ko din alam wala ako alan sa JS try natin pareho
             $('#updateForm').attr("action", "/files/share/"+$(this).data("id")+"")
-            //ito aaupdate ko sana
             $('#status').val($(this).data("status"))
-
-        
           })
         })
     });
