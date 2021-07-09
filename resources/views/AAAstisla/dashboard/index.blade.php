@@ -129,9 +129,10 @@
                                     </td>
                                     <td>
                                         {{-- data-id="{{($file->id)}}" --}}
-                                        <a class="btn btn-success text-light" data-toggle="modal" id="mediumButton" 
+                                        {{-- <a class="btn btn-success text-light" data-toggle="modal" id="mediumButton" 
                                             data-target="#mediumModal"> <i class="fas fa-plus-circle"></i>Share
-                                        </a>
+                                        </a> --}}
+                                        <button class="btn btn-sm btn-primary file" data-toggle="modal" data-target="#updateModal" data-id="{{ $file['id'] }}" data-name="{{ $file['status'] }}" >Share</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -232,7 +233,58 @@
 
     </div>
     </div>
-    <div class="modal fade" id="mediumModal" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+
+
+
+    <!-- Modal update-->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">choose..</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="updateForm" method="POST">
+                    @csrf  
+                     @method("PUT")
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
+                                value="Registrar">
+                            <label class="form-check-label" for="exampleRadios1">
+                                Registrar
+                            </label>
+                        </div>
+                        {{-- <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2"
+                                value="Cashier">
+                            <label class="form-check-label" for="exampleRadios2">
+                                Cashier
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios3"
+                                value="Director">
+                            <label class="form-check-label" for="exampleRadios3">
+                                Director
+                            </label>
+                        </div>
+                        --}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-warning btn-action center" title="Share"> Share <i
+                        class="fas fa-share text-dark"></i>
+                    </button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+
+    {{-- <div class="modal fade" id="mediumModal" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -280,12 +332,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <script>
-  
-
-        // display a modal (medium modal)
+    {{-- <script>
         $(document).on('click', '#mediumButton', function(event) {
 
             
@@ -314,9 +363,26 @@
                 timeout: 8000
             })
         });
-    </script>
+    </script> --}}
 
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('.file').each(function() {
+          $(this).click(function(event){
+              $console.log($(this).data("id"));
+              //yan? try mo nga yan kung may $ yung console . log hahah di ko din alam wala ako alan sa JS try natin pareho
+            $('#updateForm').attr("action", "/files/share/"+$(this).data("id")+"")
+            //ito aaupdate ko sana
+            $('#status').val($(this).data("status"))
 
+        
+          })
+        })
+    });
+</script>
 
 
 @endsection

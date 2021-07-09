@@ -74,8 +74,6 @@ class FileController extends Controller
 
    }
 
-
-
     public function download($id){
         $download = File::find($id);
         activity()->log(Auth::user()->name.' downloaded the file '. $download->filename);
@@ -85,12 +83,12 @@ class FileController extends Controller
     }
 
     public function share(Request $request, $fileid){
+        
+         File::where('id','=',$fileid)->update([
+             'status' => $request->status
+         ]);
 
-        $fileshare = File::findOrfail($fileid);
-        $fileshare->update(
-            $request->all()
-        );
-        return redirect()->route('dashboard.index');
+        return redirect()->back();
 
    }
     
